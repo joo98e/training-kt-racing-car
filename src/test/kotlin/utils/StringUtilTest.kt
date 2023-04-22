@@ -1,18 +1,19 @@
 package utils
 
+import common.utils.StringUtil
 import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 
 class StringUtilTest {
-    private val criteria: String = ","
+    private val delimiter: String = ","
 
     @DisplayName("콤마 분리 테스트")
     @Test
     fun splitStringByComma() {
         val str = "콤,마,분,리,테,스,트"
-        val stringList = StringUtil.splitter(str, criteria)
+        val stringList = StringUtil.splitter(str, delimiter)
         Assertions.assertThat(stringList).hasSize(7)
         Assertions.assertThat(stringList[0]).isEqualTo("콤")
         Assertions.assertThat(stringList[1]).isEqualTo("마")
@@ -27,7 +28,7 @@ class StringUtilTest {
     @Test
     fun splitStringByComma1() {
         val str = ".,,콤,마,,"
-        val stringList = StringUtil.splitter(str, criteria)
+        val stringList = StringUtil.splitter(str, delimiter)
         Assertions.assertThat(stringList).hasSize(3)
         Assertions.assertThat(stringList[0]).isEqualTo(".")
         Assertions.assertThat(stringList[1]).isEqualTo("콤")

@@ -1,4 +1,4 @@
-package domain
+package domain.car
 
 class Car(
     val name: String,

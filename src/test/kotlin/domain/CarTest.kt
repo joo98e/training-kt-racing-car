@@ -1,5 +1,6 @@
 package domain
 
+import domain.car.Car
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Test
 
