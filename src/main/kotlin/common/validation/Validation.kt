@@ -10,6 +10,8 @@ object Validation {
     }
 
     fun isNaN(target: Double, exceptionMessage: String) {
+        isEmpty(target.toString(), "값을 입력해 주세요.")
+
         if (target.isNaN()) {
             throw ExpectedException(exceptionMessage)
         }

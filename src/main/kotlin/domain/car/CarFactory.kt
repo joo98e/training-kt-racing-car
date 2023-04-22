@@ -6,7 +6,7 @@ object CarFactory {
         return Car(carName, 0)
     }
 
-    fun prepareCarList(carNames: List<String>): List<Car> {
+    fun preparingCars(carNames: List<String>): List<Car> {
         return carNames.map { create(it) }
     }
 

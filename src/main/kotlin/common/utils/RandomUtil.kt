@@ -1,5 +1,5 @@
 package common.utils
 
-class RandomUtil {
+object RandomUtil {
 
 }
