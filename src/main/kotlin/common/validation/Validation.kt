@@ -1,19 +1,15 @@
 package common.validation
 
-import common.exception.ExpectedException
-
 object Validation {
-    fun isEmpty(str: String, exceptionMessage: String) {
-        if (str.isEmpty()) {
-            throw ExpectedException(exceptionMessage)
-        }
+    fun isEmpty(str: String): Boolean {
+        return str.isEmpty()
     }
 
-    fun isNaN(target: Double, exceptionMessage: String) {
-        isEmpty(target.toString(), "값을 입력해 주세요.")
+    fun isNumeric(input: String): Boolean {
+        return input.matches("-?\\d+(\\.\\d+)?".toRegex())
+    }
 
-        if (target.isNaN()) {
-            throw ExpectedException(exceptionMessage)
-        }
+    fun isNegativeInteger(str: String): Boolean {
+        return !str.matches("\\d+".toRegex())
     }
 }
