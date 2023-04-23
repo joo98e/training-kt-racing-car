@@ -1,15 +1,12 @@
 package common.validation
 
 object Validation {
-    fun isEmpty(str: String): Boolean {
-        return str.isEmpty()
-    }
-
-    fun isNumeric(input: String): Boolean {
-        return input.matches("-?\\d+(\\.\\d+)?".toRegex())
+    fun isNumeric(str: String): Boolean {
+        return str.matches("-?\\d+(\\.\\d+)?".toRegex())
     }
 
     fun isNegativeInteger(str: String): Boolean {
-        return !str.matches("\\d+".toRegex())
+        require(isNumeric(str)) { "숫자 형식이 아닙니다." }
+        return str.toInt() < 0
     }
 }
