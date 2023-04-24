@@ -5,37 +5,28 @@ import domain.car.Car
 
 class Racing(
     private val cars: List<Car>,
-    private val laps: Int
 ) {
+
+    fun getCars(): List<Car> {
+        return cars
+    }
 
     private fun race(car: Car) {
         val randomNumber = NumberUtil.getRandomNumber(0, 9)
-
         if (randomNumber >= 4) {
             car.move()
         }
-
-        car.displayCurrentPosition()
     }
 
-    fun start() {
-        repeat(laps) {
-            println("${it + 1}회차")
-
-            for (car in cars) {
-                race(car)
-            }
-
-            print("\n")
+    fun tryRace() {
+        for (car in cars) {
+            race(car)
         }
     }
 
-    fun getWinnerNames(): String {
+    fun getWinners(): List<Car> {
         val maxPosition = cars.maxOf { it.position }
-        val winners = cars.filter { it.position == maxPosition }
-
-        val winnerNames = winners.joinToString(separator = ", ") { it.name }
-        return "최종 우승자: $winnerNames"
+        return cars.filter { it.position == maxPosition }
     }
 
 }
