@@ -1,5 +1,7 @@
 package common.utils
 
+import io.kotest.assertions.throwables.shouldThrow
+import io.kotest.matchers.booleans.shouldBeTrue
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
@@ -16,7 +18,7 @@ class NumberUtilTest {
         val randomNumber = NumberUtil.getRandomNumber(minValue, maxValue)
         val isInside: Boolean = randomNumber in minValue..maxValue
 
-        Assertions.assertTrue(isInside)
+        isInside.shouldBeTrue()
     }
 
     @DisplayName("최대 값과 최소 값이 잘못 들어오는 경우에 대한 예외 처리 [IllegalArgumentException] ")
@@ -25,7 +27,7 @@ class NumberUtilTest {
         val minValue = 100
         val maxValue = 1
 
-        Assertions.assertThrows(IllegalArgumentException::class.java) {
+        shouldThrow<IllegalArgumentException> {
             NumberUtil.getRandomNumber(minValue, maxValue)
         }
     }

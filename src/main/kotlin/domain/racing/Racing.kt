@@ -32,7 +32,9 @@ class Racing(
 
     fun getWinnerNames(): String {
         val maxPosition = cars.maxOf { it.position }
-        val winnerNames = cars.filter { it.position == maxPosition }.joinToString(separator = ", ") { it.name }
+        val winners = cars.filter { it.position == maxPosition }
+
+        val winnerNames = winners.joinToString(separator = ", ") { it.name }
         return "최종 우승자: $winnerNames"
     }
 
