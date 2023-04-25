@@ -1,25 +1,24 @@
 import common.utils.StringUtil
-import domain.racing.RacingValidation
 import domain.car.CarFactory
 import domain.racing.Racing
+import view.InputValidation
 import view.InputView
 import view.OutputView
 
 fun main() {
     val inputCarNames = InputView.inputCarNames()
-    RacingValidation.isValidateNamesOfCars(inputCarNames)
+    InputValidation.isValidateNamesOfCars(inputCarNames)
 
     val inputLaps = InputView.inputLaps()
-    RacingValidation.isValidateLapsCount(inputLaps)
+    InputValidation.isValidateLapsCount(inputLaps)
 
     val cars = CarFactory.createCars(StringUtil.splitter(inputCarNames, ","))
-    val racing = Racing(cars)
+    val racing = Racing(cars, inputLaps.toInt())
 
-    repeat(inputLaps.toInt()) {
-        racing.tryRace()
-        OutputView.printForScoreDuringMatch(it + 1, racing.getCars())
+    racing.start {
+        OutputView.printScoreDuringMatch(it, racing.getCars())
     }
 
     val result = racing.getWinners()
-    OutputView.printForScoreEndOfMatch(result)
+    OutputView.printScoreEndOfMatch(result)
 }

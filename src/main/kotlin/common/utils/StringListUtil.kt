@@ -10,8 +10,4 @@ object StringListUtil {
         }
         return false
     }
-
-    fun checkStringLength(arr: List<String>, maxLength: Int): Boolean {
-        return arr.any { it.length > maxLength }
-    }
 }

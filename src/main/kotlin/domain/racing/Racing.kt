@@ -5,10 +5,15 @@ import domain.car.Car
 
 class Racing(
     private val cars: List<Car>,
+    private val laps: Int
 ) {
+    private var lapCount = 0
 
-    fun getCars(): List<Car> {
-        return cars
+    fun start(cb: (Int) -> Unit) {
+        while (lapCount < laps) {
+            cars.forEach { race(it) }
+            cb(++this.lapCount)
+        }
     }
 
     private fun race(car: Car) {
@@ -18,15 +23,12 @@ class Racing(
         }
     }
 
-    fun tryRace() {
-        for (car in cars) {
-            race(car)
-        }
+    fun getCars(): List<Car> {
+        return cars
     }
 
     fun getWinners(): List<Car> {
         val maxPosition = cars.maxOf { it.position }
         return cars.filter { it.position == maxPosition }
     }
-
 }

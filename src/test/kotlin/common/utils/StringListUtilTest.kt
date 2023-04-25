@@ -22,13 +22,5 @@ class StringListUtilTest {
         willNotDuplicates shouldBe true
     }
 
-    @DisplayName("특정 길이 값 이상이 있는지 검사")
-    @Test
-    fun checkStringLength() {
-        val stringList = listOf("apple", "banana", "grape")
-        val isTruthy = StringListUtil.checkStringLength(stringList, 5)
-        val isFalsy = StringListUtil.checkStringLength(stringList, 6)
-        isTruthy shouldBe true
-        isFalsy shouldBe false
-    }
+
 }
