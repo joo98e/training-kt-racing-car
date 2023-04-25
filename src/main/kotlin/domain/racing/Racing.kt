@@ -9,10 +9,10 @@ class Racing(
 ) {
     private var lapCount = 0
 
-    fun start(cb: (Int) -> Unit) {
+    fun start(callback: (Int) -> Unit) {
         while (lapCount < laps) {
             cars.forEach { race(it) }
-            cb(++this.lapCount)
+            callback(++this.lapCount)
         }
     }
 
@@ -28,7 +28,7 @@ class Racing(
     }
 
     fun getWinners(): List<Car> {
-        val maxPosition = cars.maxOf { it.position }
+        val maxPosition = cars.maxOf { it.position!! }
         return cars.filter { it.position == maxPosition }
     }
 }

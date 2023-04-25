@@ -5,7 +5,7 @@ import common.utils.StringUtil
 
 class Car(
     val name: String,
-    var position: Int,
+    var position: Int? = 0,
 ) {
     init {
         if (StringUtil.checkOverLength(this.name, maxNamingLength)) {
@@ -13,8 +13,8 @@ class Car(
         }
     }
 
-    fun move(): Int {
-        this.position += 1
+    fun move(): Int? {
+        this.position = this.position?.plus(1)
         return this.position
     }
 

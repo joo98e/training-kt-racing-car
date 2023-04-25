@@ -9,7 +9,7 @@ object OutputView {
 
     fun printScoreDuringMatch(labCount: Int, cars: List<Car>) {
         println("${labCount}회차")
-        cars.map { println("${it.name}: ${convertCarPositionToDash(it.position)}") }
+        cars.map { println("${it.name}: ${convertCarPositionToDash(it.position!!)}") }
         print("\n")
     }
 
